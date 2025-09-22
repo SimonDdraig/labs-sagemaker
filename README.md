@@ -10,7 +10,7 @@
 ## Lab 2
 -- Uses the inference endpoint created in Lab 1
 -- Implements SageMaker application-autoscaling
--- Tests the functionality using llmperf - DOUBTFUL - CODED FOR HIGGINGFACE API AND LLAMA MODEL ONLY!!!!
-  -- https://github.com/philschmid/llmperf
+-- Tests the functionality using locust
+  -- [text](https://docs.locust.io/en/stable/)
 -- **WARNING!**
   -- This lab can incur $$$ costs if you provision large instances and leave the endpoint running!
