@@ -9,10 +9,12 @@ from locust.contrib.fasthttp import FastHttpUser
 
 from locust import task, events
 
+# get the vars exported in the terminal before running locust
 region = os.environ["AWS_REGION"]
 contentType = os.environ["CONTENT_TYPE"]
 payload = os.environ["PAYLOAD"]
 endpointName = os.environ['ENDPOINT_NAME']
+ 
 
 class BotoClient:
     def __init__(self, host):
@@ -27,7 +29,6 @@ class BotoClient:
         self.payload = payload
 
     def send(self):
-
         request_meta = {
             "request_type": "InvokeEndpoint",
             "name": "SageMaker",
