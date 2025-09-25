@@ -14,3 +14,4 @@
   -- [text](https://docs.locust.io/en/stable/)
 -- **WARNING!**
   -- This lab can incur $$$ costs if you provision large instances and leave the endpoint running!
+autoscaling
