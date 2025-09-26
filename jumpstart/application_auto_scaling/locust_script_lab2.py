@@ -1,3 +1,5 @@
+# if running on a mac, and you see threading issues, this is a harmless warning related to gevent (the async library Locust uses) and Python's threading system
+# as long as you see # fails 0% all is well!
 import json
 import logging
 import os
@@ -27,9 +29,9 @@ class BotoClient:
             # increase timeout for image models
             config = Config(
                 region_name=region,
-                retries={"max_attempts": 0, "mode": "standard"},
-                read_timeout=60,  # 1 minute
-                connect_timeout=60
+                retries={"max_attempts": 1, "mode": "standard"},
+                read_timeout=120,  # 1 minute
+                connect_timeout=120
             )
 
         self.sagemaker_client = boto3.client("sagemaker-runtime", config=config)
@@ -45,11 +47,11 @@ class BotoClient:
                 "text_prompts": [
                     {"text": payload}
                 ],
-                "width": 128,
-                "height": 128,
+                "width": 512,
+                "height": 512,
                 "cfg_scale": 7.0,
-                "steps": 50,
-                "seed": random.randint(0, 4294967295)
+                "steps": 30,
+                "seed": random.randint(0, 4294967295),
             }
             self.payload = json.dumps(payload_dict).encode("utf-8")
 
@@ -70,6 +72,12 @@ class BotoClient:
         start_perf_counter = time.perf_counter()
 
         try:
+            if modelType == "txt2img":
+                #randomize seed so we get a different image each time
+                payload_dict = json.loads(self.payload)
+                payload_dict["seed"] = random.randint(0, 4294967295)
+                self.payload = json.dumps(payload_dict).encode("utf-8")
+
             response = self.sagemaker_client.invoke_endpoint(
                 EndpointName=self.endpoint_name,
                 Body=self.payload,
@@ -79,12 +87,18 @@ class BotoClient:
                 logging.info(response["Body"].read())
             else:
                 logging.info("Image generated")
-                result = json.loads(response["Body"].read())
-                image_b64 = result["generated_images"][0]
+                raw_body = response.get("Body").read()
+                # Convert bytes -> string
+                body_str = raw_body.decode("utf-8")
+                # Parse JSON
+                result = json.loads(body_str)
+                # Get the base64 string
+                image_b64 = result["generated_image"].strip()  # remove extra whitespace/newlines
+                # Decode base64
                 image_bytes = base64.b64decode(image_b64)
+                # Open and show the image
                 image = Image.open(BytesIO(image_bytes))
                 image.show()
-                image.close()
 
         except Exception as e:
             request_meta["exception"] = e

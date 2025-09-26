@@ -1,2 +1,1 @@
 Method,Name,Error,Occurrences
-InvokeEndpoint,SageMaker,"ReadTimeoutError('Read timeout on endpoint URL: ""https://runtime.sagemaker.us-east-1.amazonaws.com/endpoints/stabilityai-stable-diffusion-xl-base-1--2025-09-26-07-12-04-199/invocations""')",64

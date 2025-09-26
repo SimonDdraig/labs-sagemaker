@@ -5,7 +5,7 @@
 -- Create an endpoint for inference
 -- Interacts with the model
 -- **WARNING!**
-  -- This lab can incur $$$ costs if you provision large instances and leave the endpoint running!
+  -- This lab can incur $$$$$ costs if you provision large instances and leave the endpoint running!
 
 ## Lab 2
 -- Uses the inference endpoint created in Lab 1
