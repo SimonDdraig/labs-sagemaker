@@ -1,1 +1,2 @@
 Method,Name,Error,Occurrences
+InvokeEndpoint,SageMaker,ClientError('An error occurred (ThrottlingException) when calling the InvokeEndpoint operation (reached max retries: 1): None'),11

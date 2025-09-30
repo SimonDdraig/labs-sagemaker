@@ -23,7 +23,7 @@ class BotoClient:
     def __init__(self, host):
         if modelType == "llm":
             config = Config(
-                region_name=region, retries={"max_attempts": 0, "mode": "standard"}
+                region_name=region, retries={"max_attempts": 1, "mode": "standard"}
             )
         else:
             # increase timeout for image models

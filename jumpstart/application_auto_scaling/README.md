@@ -9,7 +9,16 @@
 
 ## Lab 2
 -- Uses the inference endpoint created in Lab 1
--- Implements SageMaker application-autoscaling
+-- Implements SageMaker application-autoscaling using **target tracking** scaling policy
+-- Tests the functionality using locust
+  -- [text](https://docs.locust.io/en/stable/)
+-- **WARNING!**
+  -- This lab can incur $$$ costs if you provision large instances and leave the endpoint running!
+autoscaling
+
+## Lab 3
+-- Uses the inference endpoint created in Lab 1
+-- Implements SageMaker application-autoscaling using **step** scaling policy
 -- Tests the functionality using locust
   -- [text](https://docs.locust.io/en/stable/)
 -- **WARNING!**
