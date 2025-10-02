@@ -14,7 +14,7 @@
   -- [text](https://docs.locust.io/en/stable/)
 -- **WARNING!**
   -- This lab can incur $$$ costs if you provision large instances and leave the endpoint running!
-autoscaling
+
 
 ## Lab 3
 -- Uses the inference endpoint created in Lab 1
@@ -23,4 +23,3 @@ autoscaling
   -- [text](https://docs.locust.io/en/stable/)
 -- **WARNING!**
   -- This lab can incur $$$ costs if you provision large instances and leave the endpoint running!
-autoscaling

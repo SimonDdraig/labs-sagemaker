@@ -1,2 +1,4 @@
 Method,Name,Error,Occurrences
-InvokeEndpoint,SageMaker,ClientError('An error occurred (ThrottlingException) when calling the InvokeEndpoint operation (reached max retries: 1): None'),11
+InvokeEndpoint,SageMaker,ClientError('An error occurred (ThrottlingException) when calling the InvokeEndpoint operation (reached max retries: 1): None'),1143
+InvokeEndpoint,SageMaker,"ReadTimeoutError('Read timeout on endpoint URL: ""None""')",2
+InvokeEndpoint,SageMaker,"ConnectionClosedError('Connection was closed before we received a valid response from endpoint URL: ""https://runtime.sagemaker.us-east-1.amazonaws.com/endpoints/meta-textgeneration-llama-2-7b-2025-10-02-03-01-47-403/invocations"".')",1

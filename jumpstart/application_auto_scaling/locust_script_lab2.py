@@ -37,6 +37,7 @@ class BotoClient:
         self.sagemaker_client = boto3.client("sagemaker-runtime", config=config)
         self.endpoint_name = endpointName
         self.content_type = contentType
+        self.log_counter = 0
 
         if modelType == "llm":
             self.payload = payload
@@ -84,7 +85,11 @@ class BotoClient:
                 ContentType=self.content_type,
             )
             if modelType == "llm":
-                logging.info(response["Body"].read())
+                body_bytes = response["Body"].read()  # read once
+                # only log the first 10 times for LLM
+                if self.log_counter < 10: # just write the generated text to terminal window for the first 10 times to show as an example
+                    logging.info(body_bytes)
+                    self.log_counter += 1
             else:
                 logging.info("Image generated")
                 raw_body = response.get("Body").read()
