@@ -1,4 +1,4 @@
-# labs-sagemaker
+# labs-sagemaker using JumpStart
 ## Lab 1
 -- Provisions a model using JumpStart
 -- JumpStart hosts the model on an instance of your choice
