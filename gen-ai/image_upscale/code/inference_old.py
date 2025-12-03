@@ -22,10 +22,10 @@
 # Mix multiple models into one endpoint.
 # Integrate preprocessing/postprocessing (e.g., crop, resize, watermark).
 # Use the latest Hugging Face weights directly, not the static JumpStart snapshot.
-# If we just used the model via JumpStart, we'd likely get cuda errors (400) dues to large images or batch sizes and we can't control the use of the GPU
+# If we just used the model via JumpStart, we'd likely get cuda errors (400) due to large images or batch sizes and we can't control the use of the GPU
 
 # we use a stability diffusion diffuser pipeline to batch the image being scaled and then stitch back together
-# this allows us to use smaller instance sizes wher the GPU doesn't have to be huge to accommodate the source image in gpu memory
+# this allows us to use smaller instance sizes where the GPU doesn't have to be huge to accommodate the source image in gpu memory
 # https://huggingface.co/stabilityai/stable-diffusion-x4-upscaler
 
 from diffusers import StableDiffusionUpscalePipeline

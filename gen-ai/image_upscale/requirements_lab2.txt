@@ -1,6 +1,7 @@
 boto3
 boto3-stubs
 sagemaker==3.0.1
+huggingface-hub
 diffusers 
 transformers 
 accelerate 
