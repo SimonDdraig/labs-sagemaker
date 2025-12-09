@@ -28,7 +28,6 @@
 
 from diffusers.pipelines.stable_diffusion.pipeline_stable_diffusion_upscale import StableDiffusionUpscalePipeline
 from PIL import Image
-import torch
 import base64
 from io import BytesIO
 import json
@@ -56,17 +55,13 @@ def model_fn(model_dir):
     #    else "cpu"
     #)
     logger.info("=============================================================================")
-    device = "cuda" if torch.cuda.is_available() else "cpu"
-    logger.info(f"model_fn using device: {device}")
-    torchf = torch.float16 if device == "cuda" else torch.float32
-    logger.info(f"model_fn using torch dtype: {torchf}")
+    logger.info(f"model_fn using device: cuda")
     logger.info("=============================================================================")
 
     # create the pipeline
     pipeline = StableDiffusionUpscalePipeline.from_pretrained(
-        model_dir,
-        torch_dtype=torchf
-    ).to(device)
+        model_dir
+    ).to("cuda")
     # Memory optimizations
     logger.info("=============================================================================")
     logger.info(f"model_fn enable_attention_slicing")
