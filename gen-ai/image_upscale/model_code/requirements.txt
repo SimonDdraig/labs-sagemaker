@@ -1,0 +1,8 @@
+# Core diffusion & Hugging Face
+diffusers
+transformers
+accelerate
+safetensors
+
+# Image processing
+pillow
